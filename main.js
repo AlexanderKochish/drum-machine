@@ -6,7 +6,7 @@ document.querySelector('#app').innerHTML = `
   <div class="drum-container">
   <button>1</button>
   <button>2</button>
-  <button></button>
+  <button>3</button>
   <button></button>
   <button></button>
   <button></button>
