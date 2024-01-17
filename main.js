@@ -5,6 +5,7 @@ document.querySelector('#app').innerHTML = `
   <div class="container">
   <div class="drum-container">
   <button></button>
+  <button></button>
   </div>
   </div>
   </div>
