@@ -3,7 +3,9 @@ import './style.css'
 document.querySelector('#app').innerHTML = `
   <div class="wrapper">
   <div class="container">
-  <div class="drum-container"></div>
+  <div class="drum-container">
+  <button></button>
+  </div>
   </div>
   </div>
 `
