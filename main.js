@@ -1,16 +1,19 @@
 import './style.css'
 
 document.querySelector('#app').innerHTML = `
-  <div class="wrapper">
-  <div class="container">
-  <div class="drum-container">
-  <button>1</button>
-  <button>2</button>
-  <button>3</button>
-  <button>4</button>
-  <button>5</button>
+  <div class="inner-container">
+  <div class="pad-bank">
+  <div class="drum-pud" id="Heater-1"></div>
+  <div class="drum-pud" id="Heater-2"></div>
+  <div class="drum-pud" id="Heater-3"></div>
+  <div class="drum-pud" id="Heater-4"></div>
+  <div class="drum-pud" id="Clap"></div>
+  <div class="drum-pud" id="Open-HH"></div>
+  <div class="drum-pud" id="Kick-n'-Hat"></div>
+  <div class="drum-pud" id="Kick"></div>
+  <div class="drum-pud" id="Closed-HH"></div>
   </div>
-  </div>
+  <div class="controls-container"></div>
   </div>
 `
 
