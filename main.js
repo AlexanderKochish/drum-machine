@@ -33,17 +33,17 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
     </div>
   <div class="controls-container">
-  <div class="volume-panel">Volume: </div>
-  <input type="range" id='rangeVolume'/>
+    <div class="volume-panel">Volume: </div>
+    <input type="range" id='rangeVolume'/>
   </div>
   </div>
 `
+
 let volumePanel = document.querySelector('.volume-panel')
 let padBank = document.querySelector('.pad-bank')
 let drupPud = document.querySelectorAll('.drum-pud');
 let clip = document.querySelectorAll('.clip')
 let rangeVolume = document.querySelector('#rangeVolume')
-
 
 function volumeDrum(e) {
   clip.forEach((item) => {
