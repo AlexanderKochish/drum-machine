@@ -31,10 +31,11 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="drum-pud" id="Closed-HH">
           <audio class="clip" id="C" src="https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3"></audio>
         </div>
-        <div class="controls-container">
-          <div class="volume-panel">Volume: </div>
-          <input type="range" id='rangeVolume'/>
-        </div>
+    </div>
+    <div class="controls-container">
+      <div class="volume-panel">Volume: </div>
+      <input type="range" id='rangeVolume'/>
+      <input type="" id="switchOff"/>
     </div>
   </div>
 `;
