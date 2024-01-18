@@ -85,10 +85,23 @@ document.addEventListener("DOMContentLoaded", () => {
   volumePanel.textContent = `Volume: ${rangeVolume.value}`;
   rangeVolume.addEventListener("input", (e) => volumeDrum(e));
 
+  function removeActive(){
+    drupPud.forEach((item, i) => {
+      item.classList.remove('active')
+    })
+  }
+
   drupPud.forEach((item, i) => {
     item.textContent = clip[i].id;
+    item.classList.remove('active')
     item.addEventListener("click", (e) => {
-      clip[i].play();
+      removeActive()
+      if(!e.target.classList.contains('active') && e.target){
+        e.target.classList.add('active')
+        clip[i].play();  
+        setTimeout(() => removeActive(), 300)
+      }
+      
     });
   });
 });
