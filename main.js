@@ -3,7 +3,7 @@ import "./style.css";
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#app").innerHTML = `
   <div class="inner-container">
-  <div>
+  <div class='display-pad-bank'>
     <div class="pad-bank">
         <div class="drum-pud" id="Heater-1">
           <audio class="clip" id="Q" src="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3"></audio>
