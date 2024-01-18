@@ -1,7 +1,7 @@
-import './style.css'
+import "./style.css";
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelector('#app').innerHTML = `
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector("#app").innerHTML = `
   <div class="inner-container">
     <div class="pad-bank">
         <div class="drum-pud" id="Heater-1">
@@ -37,57 +37,55 @@ document.addEventListener('DOMContentLoaded', () => {
     <input type="range" id='rangeVolume'/>
   </div>
   </div>
-`
+`;
 
-let volumePanel = document.querySelector('.volume-panel')
-let padBank = document.querySelector('.pad-bank')
-let drupPud = document.querySelectorAll('.drum-pud');
-let clip = document.querySelectorAll('.clip')
-let rangeVolume = document.querySelector('#rangeVolume')
+  let volumePanel = document.querySelector(".volume-panel");
+  let padBank = document.querySelector(".pad-bank");
+  let drupPud = document.querySelectorAll(".drum-pud");
+  let clip = document.querySelectorAll(".clip");
+  let rangeVolume = document.querySelector("#rangeVolume");
 
-function volumeDrum(e) {
-  clip.forEach((item) => {
-    rangeVolume.min = 0
-    rangeVolume.max = 100
-    volumePanel.textContent = `Volume: ${rangeVolume.value}`
-    switch(e.target.value){
-      case '100': 
-        return item.volume = 1.0
-      case '90':
-        return item.volume = 0.9
-      case '80':
-        return item.volume = 0.8
-      case '70':
-        return item.volume = 0.7
-      case '60':
-        return item.volume = 0.6
-      case '50':
-        return item.volume = 0.5
-      case '40':
-        return item.volume = 0.4
-      case '30':
-        return item.volume = 0.3
-      case '20':
-        return item.volume = 0.2
-      case '10':
-        return item.volume = 0.1
-      case '0':
-        return item.volume = 0.0
-      default:
-        return item.volume = 0.1
-    }  
-  })
-}
+  function volumeDrum(e) {
+    clip.forEach((item) => {
+      rangeVolume.min = 0;
+      rangeVolume.max = 100;
+      volumePanel.textContent = `Volume: ${rangeVolume.value}`;
+      switch (e.target.value) {
+        case "100":
+          return (item.volume = 1.0);
+        case "90":
+          return (item.volume = 0.9);
+        case "80":
+          return (item.volume = 0.8);
+        case "70":
+          return (item.volume = 0.7);
+        case "60":
+          return (item.volume = 0.6);
+        case "50":
+          return (item.volume = 0.5);
+        case "40":
+          return (item.volume = 0.4);
+        case "30":
+          return (item.volume = 0.3);
+        case "20":
+          return (item.volume = 0.2);
+        case "10":
+          return (item.volume = 0.1);
+        case "0":
+          return (item.volume = 0.0);
+        default:
+          return (item.volume = 0.1);
+      }
+    });
+  }
 
-volumePanel.textContent = `Volume: ${rangeVolume.value}`
-rangeVolume.addEventListener('input',(e) => volumeDrum(e))
+  volumePanel.textContent = `Volume: ${rangeVolume.value}`;
+  rangeVolume.addEventListener("input", (e) => volumeDrum(e));
 
-drupPud.forEach((item, i) => {
-  item.textContent = clip[i].id
-  item.addEventListener('click', (e) => {
-    clip[i].play()
-    
-  })
-})
-
-})
+  drupPud.forEach((item, i) => {
+    item.textContent = clip[i].id;
+    item.addEventListener("click", (e) => {
+      clip[i].play();
+    });
+  });
+});
