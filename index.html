@@ -7,7 +7,30 @@
     <title>Drum</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <div class="inner-container">
+        <div class='display-pad-bank'>
+          <div class="pad-bank">
+          </div>
+          <div class="controls-container">
+            <div class="power-container">
+            <span>Power</span>
+              <div class="power">
+                <div class="power-select"></div>
+              </div>
+            </div>
+            <div class="volume-panel">Volume: </div>
+            <input type="range" id='rangeVolume'/>
+            <div class="bank-container">
+              <span>Bank</span>
+                <div class="bank">
+                  <div class="bank-select"></div>
+                </div>
+              </div>
+          </div>
+          </div>
+        </div>
+    </div>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
