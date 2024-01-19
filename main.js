@@ -34,9 +34,20 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </div>
     <div class="controls-container">
+      <div class="power-container">
+      <span>Power</span>
+        <div class="power">
+          <div class="power-select"></div>
+        </div>
+      </div>
       <div class="volume-panel">Volume: </div>
       <input type="range" id='rangeVolume'/>
-      <input type="" id="switchOff"/>
+      <div class="bank-container">
+      <span>Bank</span>
+        <div class="bank">
+          <div class="bank-select"></div>
+        </div>
+      </div>
     </div>
     </div>
   </div>
@@ -47,37 +58,35 @@ document.addEventListener("DOMContentLoaded", () => {
   let drupPud = document.querySelectorAll(".drum-pud");
   let clip = document.querySelectorAll(".clip");
   let rangeVolume = document.querySelector("#rangeVolume");
+  let power = document.querySelector(".power");
+  let body = document.querySelector("body");
+  let powerTriger = false;  
+  
+
+  function togglePower(e){
+    if(e.target.classList.contains("power-select") || e.target){
+      power.classList.toggle('active')
+      if(power.classList.contains('active')){
+        powerTriger = true;
+      }else{
+        powerTriger = false;
+      }
+    }
+  }
+
+  power.addEventListener('click', (e) => togglePower(e));
 
   function volumeDrum(e) {
     clip.forEach((item) => {
-      rangeVolume.min = 0;
-      rangeVolume.max = 100;
-      volumePanel.textContent = `Volume: ${rangeVolume.value}`;
-      switch (e.target.value) {
-        case "100":
-          return (item.volume = 1.0);
-        case "90":
-          return (item.volume = 0.9);
-        case "80":
-          return (item.volume = 0.8);
-        case "70":
-          return (item.volume = 0.7);
-        case "60":
-          return (item.volume = 0.6);
-        case "50":
-          return (item.volume = 0.5);
-        case "40":
-          return (item.volume = 0.4);
-        case "30":
-          return (item.volume = 0.3);
-        case "20":
-          return (item.volume = 0.2);
-        case "10":
-          return (item.volume = 0.1);
-        case "0":
-          return (item.volume = 0.0);
-        default:
-          return (item.volume = 0.1);
+      if(!powerTriger){
+        rangeVolume.step = 0.01;
+        rangeVolume.min = 0;
+        rangeVolume.max = 1;
+        volumePanel.textContent = `Volume: ${rangeVolume.value.split('.')[1]}`;
+        item.volume = e.target.value;
+        item.disabled = false;
+      }else{
+        item.disabled = true;
       }
     });
   }
@@ -93,15 +102,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   drupPud.forEach((item, i) => {
     item.textContent = clip[i].id;
-    item.classList.remove('active')
+    body.addEventListener('keypress', (e) => {
+      if(powerTriger) return;
+      if(clip[i].id.toLowerCase() == e.key && !drupPud[i].classList.contains('active')){
+        drupPud[i].classList.add('active')
+        clip[i].play();
+        setTimeout(() => removeActive(), 300)
+      }
+    })
+  });
+
+  drupPud.forEach((item, i) => {
+    item.textContent = clip[i].id;
     item.addEventListener("click", (e) => {
-      removeActive()
+      if(powerTriger) return;
       if(!e.target.classList.contains('active') && e.target){
         e.target.classList.add('active')
         clip[i].play();  
         setTimeout(() => removeActive(), 300)
       }
-      
-    });
+    })
   });
 });
